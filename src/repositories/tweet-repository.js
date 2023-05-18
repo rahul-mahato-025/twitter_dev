@@ -1,21 +1,17 @@
 const Tweet = require("../models/tweet");
+const CrudRepository = require("./crud-repository");
 
-class TweetRepository {
-  async create(data) {
-    try {
-      const tweet = await Tweet.create(data);
-      return tweet;
-    } catch (error) {
-      console.log("Can't create tweet ", error);
-    }
+class TweetRepository extends CrudRepository {
+  constructor() {
+    super(Tweet);
   }
 
-  async destroy(tweetId) {
+  async get(id) {
     try {
-      await Tweet.findByIdAndRemove(tweetId);
-      return true;
+      const res = await this.model.findById(id).populate({ path: "likes" });
+      return res;
     } catch (error) {
-      console.log("Can't delete tweet ", error);
+      console.log(error);
     }
   }
 }
