@@ -8,7 +8,7 @@ class CrudRepository {
       const res = await this.model.create(data);
       return res;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -17,7 +17,7 @@ class CrudRepository {
       await this.model.findByIdAndRemove(id);
       return true;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -26,7 +26,7 @@ class CrudRepository {
       const res = await this.model.findById(id);
       return res;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -35,7 +35,7 @@ class CrudRepository {
       const res = await this.model.findByIdAndUpdate(id, data, { new: true });
       return res;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 }
