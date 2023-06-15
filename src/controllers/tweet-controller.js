@@ -11,14 +11,14 @@ const createTweet = async (req, res) => {
       data: tweet,
       success: true,
       message: "Tweet created successfully",
-      err: {},
+      error: {},
     });
   } catch (error) {
     return res.status(500).json({
       data: {},
       success: false,
       message: "Something went wrong!",
-      err: error,
+      error: error,
     });
   }
 };
